@@ -100,6 +100,9 @@ public partial class App : Application
         services.AddTransient<SettingsViewModel>();
         services.AddTransient<SettingsPage>();
 
+        services.AddTransient<RsaDigitalSigningViewModel>();
+        services.AddTransient<RsaDigitalSigningPage>();
+
         // Configuration
         services.Configure<AppConfig>(context.Configuration.GetSection(nameof(AppConfig)));
     }

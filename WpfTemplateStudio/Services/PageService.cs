@@ -24,6 +24,7 @@ public class PageService : IPageService
         Configure<DataGridViewModel, DataGridPage>();
         Configure<BlankViewModel, BlankPage>();
         Configure<SettingsViewModel, SettingsPage>();
+        Configure<RsaDigitalSigningViewModel, RsaDigitalSigningPage>();
     }
 
     public Type GetPageType(string key)

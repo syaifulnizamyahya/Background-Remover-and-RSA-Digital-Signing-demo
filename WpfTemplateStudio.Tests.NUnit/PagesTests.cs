@@ -53,6 +53,7 @@ public class PagesTests
         services.AddTransient<DataGridViewModel>();
         services.AddTransient<ContentGridViewModel>();
         services.AddTransient<BlankViewModel>();
+        services.AddTransient<RsaDigitalSigningViewModel>();
 
         // Configuration
         services.Configure<AppConfig>(context.Configuration.GetSection(nameof(AppConfig)));
@@ -205,6 +206,28 @@ public class PagesTests
         {
             var pageType = pageService.GetPageType(typeof(BlankViewModel).FullName);
             Assert.AreEqual(typeof(BlankPage), pageType);
+        }
+        else
+        {
+            Assert.Fail($"Can't resolve {nameof(IPageService)}");
+        }
+    }
+
+    // TODO: Add tests for functionality you add to BlankViewModel.
+    [Test]
+    public void TestRsaDigitalSigningViewModelCreation()
+    {
+        var vm = _host.Services.GetService(typeof(RsaDigitalSigningViewModel));
+        Assert.IsNotNull(vm);
+    }
+
+    [Test]
+    public void TestGetRsaDigitalSigningPageType()
+    {
+        if (_host.Services.GetService(typeof(IPageService)) is IPageService pageService)
+        {
+            var pageType = pageService.GetPageType(typeof(RsaDigitalSigningViewModel).FullName);
+            Assert.AreEqual(typeof(RsaDigitalSigningPage), pageType);
         }
         else
         {
