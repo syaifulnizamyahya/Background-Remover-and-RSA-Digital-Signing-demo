@@ -25,5 +25,13 @@ public class RsaDigitalSignServiceTests
 
         //Assert
         Assert.AreEqual(expectedResult, result);
+
+        TestContext.Out.WriteLine("Private key: " + privateKey);
+        TestContext.Out.WriteLine("Public key: " + publicKey);
+        TestContext.Out.WriteLine("Data to sign: " + dataToSign);
+        TestContext.Out.WriteLine("Signed data: " + Convert.ToBase64String(signedData));
+        TestContext.Out.WriteLine("Data to verify: " + dataToVerify);
+        TestContext.Out.WriteLine("Result: " + result);
+
     }
 }
