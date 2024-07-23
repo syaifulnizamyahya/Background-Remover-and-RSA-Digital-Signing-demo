@@ -25,4 +25,9 @@ public partial class RsaDigitalSigningPage : Page
         InitializeComponent();
         DataContext = viewModel;
     }
+
+    private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+    {
+
+    }
 }

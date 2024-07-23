@@ -231,4 +231,13 @@
   <data name="RsaDigitalSigningPage.VerifyData" xml:space="preserve">
     <value>Verify data</value>
   </data>
+  <data name="RsaDigitalSigningPage.PrivateKey" xml:space="preserve">
+    <value>Private key</value>
+  </data>
+  <data name="RsaDigitalSigningPage.PublicKey" xml:space="preserve">
+    <value>Public key</value>
+  </data>
+  <data name="RsaDigitalSigningPage.DigitalSignature" xml:space="preserve">
+    <value>Digital signature</value>
+  </data>
 </root>

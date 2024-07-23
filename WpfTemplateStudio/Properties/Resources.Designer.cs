@@ -142,6 +142,15 @@ namespace WpfTemplateStudio.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Digital signature.
+        /// </summary>
+        public static string RsaDigitalSigningPage_DigitalSignature {
+            get {
+                return ResourceManager.GetString("RsaDigitalSigningPage.DigitalSignature", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Generate key.
         /// </summary>
         public static string RsaDigitalSigningPage_GenerateKey {
@@ -156,6 +165,24 @@ namespace WpfTemplateStudio.Properties {
         public static string RsaDigitalSigningPage_GetDigitalSignature {
             get {
                 return ResourceManager.GetString("RsaDigitalSigningPage.GetDigitalSignature", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Private key.
+        /// </summary>
+        public static string RsaDigitalSigningPage_PrivateKey {
+            get {
+                return ResourceManager.GetString("RsaDigitalSigningPage.PrivateKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Public key.
+        /// </summary>
+        public static string RsaDigitalSigningPage_PublicKey {
+            get {
+                return ResourceManager.GetString("RsaDigitalSigningPage.PublicKey", resourceCulture);
             }
         }
         
