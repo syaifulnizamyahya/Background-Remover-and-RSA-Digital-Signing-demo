@@ -88,8 +88,6 @@ public class RsaDigitalSigningViewModel : ObservableObject
             }
         }
         await SignData();
-
-        //return Task.CompletedTask;
     }
 
     private IAsyncRelayCommand signDataCommand;
@@ -150,9 +148,6 @@ public class RsaDigitalSigningViewModel : ObservableObject
             VerificationResult = null;
             return;
         }
-
-        //var fileContent = System.IO.File.ReadAllBytes(DataToSign);
-        //bool result = RsaDigitalSignService.VerifyData(fileContent, _publicKey, _signedData);
 
         VerificationResult = "Verifying...";
         bool result = false;
