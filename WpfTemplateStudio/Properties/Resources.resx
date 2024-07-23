@@ -216,4 +216,19 @@
   <data name="ShellRsaDigitalSigningPage" xml:space="preserve">
     <value>RsaDigitalSigning</value>
   </data>
+  <data name="RsaDigitalSigningPage.AddFileToSign" xml:space="preserve">
+    <value>Add file to sign</value>
+  </data>
+  <data name="RsaDigitalSigningPage.AddFileToVerify" xml:space="preserve">
+    <value>Add file to verify</value>
+  </data>
+  <data name="RsaDigitalSigningPage.GenerateKey" xml:space="preserve">
+    <value>Generate key</value>
+  </data>
+  <data name="RsaDigitalSigningPage.GetDigitalSignature" xml:space="preserve">
+    <value>Get digital signature</value>
+  </data>
+  <data name="RsaDigitalSigningPage.VerifyData" xml:space="preserve">
+    <value>Verify data</value>
+  </data>
 </root>

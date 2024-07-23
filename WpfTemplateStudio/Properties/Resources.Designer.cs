@@ -124,6 +124,51 @@ namespace WpfTemplateStudio.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add file to sign.
+        /// </summary>
+        public static string RsaDigitalSigningPage_AddFileToSign {
+            get {
+                return ResourceManager.GetString("RsaDigitalSigningPage.AddFileToSign", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add file to verify.
+        /// </summary>
+        public static string RsaDigitalSigningPage_AddFileToVerify {
+            get {
+                return ResourceManager.GetString("RsaDigitalSigningPage.AddFileToVerify", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Generate key.
+        /// </summary>
+        public static string RsaDigitalSigningPage_GenerateKey {
+            get {
+                return ResourceManager.GetString("RsaDigitalSigningPage.GenerateKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Get digital signature.
+        /// </summary>
+        public static string RsaDigitalSigningPage_GetDigitalSignature {
+            get {
+                return ResourceManager.GetString("RsaDigitalSigningPage.GetDigitalSignature", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Verify data.
+        /// </summary>
+        public static string RsaDigitalSigningPage_VerifyData {
+            get {
+                return ResourceManager.GetString("RsaDigitalSigningPage.VerifyData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to RSA Digital Signing.
         /// </summary>
         public static string RsaDigitalSigningPageTitle {

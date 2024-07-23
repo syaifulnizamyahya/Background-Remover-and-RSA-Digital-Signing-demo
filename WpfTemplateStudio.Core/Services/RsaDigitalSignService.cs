@@ -38,6 +38,12 @@ public class RsaDigitalSignService : IRsaDigitalSignService
 
     public static bool VerifyData(object dataToVerify, string publicKey, byte[] signature)
     {
+        if (dataToVerify == null || publicKey == null || signature == null)
+        {
+            var errorMessage = "Data to verify : " + dataToVerify + ", public key : " + publicKey + ", or signature : " + signature + " cannot be null.";
+            throw new ArgumentNullException(errorMessage);
+        }
+
         using (var rsa = new RSACryptoServiceProvider())
         {
             rsa.FromXmlString(publicKey);

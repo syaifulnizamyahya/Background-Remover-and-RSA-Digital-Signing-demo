@@ -20,6 +20,12 @@
             Margin="{StaticResource MediumLeftMargin}"
             Style="{StaticResource PageTitleStyle}"
             Text="{x:Static properties:Resources.RsaDigitalSigningPageTitle}" />
+
+        <!--
+            The Mahapps Gray10 color represents where you should place your content.
+            Place your content here.
+        -->
+
         <ScrollViewer Grid.Row="1">
             <Grid Margin="{StaticResource MediumLeftRightMargin}" Background="{DynamicResource MahApps.Brushes.Gray10}">
                 <Grid.RowDefinitions>
@@ -39,7 +45,7 @@
                     Grid.Column="0"
                     VerticalAlignment="Top"
                     Command="{Binding GenerateKeyCommand}"
-                    Content="Generate key" />
+                    Content="{x:Static properties:Resources.RsaDigitalSigningPage_GenerateKey}" />
                 <Grid Grid.Column="1">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
@@ -62,12 +68,12 @@
                     Grid.Row="1"
                     VerticalAlignment="Top"
                     Command="{Binding AddDataToSignCommand}"
-                    Content="Add data to sign" />
+                    Content="{x:Static properties:Resources.RsaDigitalSigningPage_AddFileToSign}" />
                 <TextBlock
                     Grid.Row="1"
                     Grid.Column="1"
                     VerticalAlignment="Top"
-                    Text="Data to sign"
+                    Text="{Binding DataToSign}"
                     TextWrapping="Wrap" />
 
 
@@ -76,37 +82,40 @@
                     Grid.Row="2"
                     VerticalAlignment="Top"
                     Command="{Binding SignDataCommand}"
-                    Content="Sign data" />
+                    Content="{x:Static properties:Resources.RsaDigitalSigningPage_GetDigitalSignature}" />
                 <TextBlock
                     Grid.Row="2"
                     Grid.Column="1"
-                    Text="Digital signature"
+                    VerticalAlignment="Top"
+                    Text="{Binding DigitalSignature}"
                     TextWrapping="Wrap" />
 
-                <StackPanel Grid.Row="4">
-                    <StackPanel>
-                        <StackPanel Height="100" Orientation="Horizontal" />
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" />
-                    <StackPanel Orientation="Horizontal">
-                        <Button Command="{Binding AddDataToVerifyCommand}" Content="Add data to verify" />
-                        <TextBox
-                            Width="120"
-                            Text="Data to verify"
-                            TextWrapping="Wrap" />
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <Button Command="{Binding VerifyDataCommand}" Content="Verify data" />
-                        <TextBox
-                            Width="120"
-                            Text="Verified same document"
-                            TextWrapping="Wrap" />
-                    </StackPanel>
-                </StackPanel>
-                <!--
-                    The Mahapps Gray10 color represents where you should place your content.
-                    Place your content here.
-                -->
+                <!--  add data to verify  -->
+                <Button
+                    Grid.Row="3"
+                    VerticalAlignment="Top"
+                    Command="{Binding AddDataToVerifyCommand}"
+                    Content="{x:Static properties:Resources.RsaDigitalSigningPage_AddFileToVerify}" />
+                <TextBox
+                    Grid.Row="3"
+                    Grid.Column="1"
+                    VerticalAlignment="Top"
+                    Text="{Binding DataToVerify}"
+                    TextWrapping="Wrap" />
+
+                <!--  verify data  -->
+                <Button
+                    Grid.Row="4"
+                    Grid.Column="0"
+                    VerticalAlignment="Top"
+                    Command="{Binding VerifyDataCommand}"
+                    Content="{x:Static properties:Resources.RsaDigitalSigningPage_VerifyData}" />
+                <TextBox
+                    Grid.Row="4"
+                    Grid.Column="1"
+                    VerticalAlignment="Top"
+                    Text="{Binding VerificationResult}"
+                    TextWrapping="Wrap" />
             </Grid>
         </ScrollViewer>
     </Grid>
