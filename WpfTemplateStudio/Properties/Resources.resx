@@ -240,4 +240,10 @@
   <data name="RsaDigitalSigningPage.DigitalSignature" xml:space="preserve">
     <value>Digital signature</value>
   </data>
+  <data name="BackgroundRemoverPageTitle" xml:space="preserve">
+    <value>Background Remover</value>
+  </data>
+  <data name="ShellBackgroundRemoverPage" xml:space="preserve">
+    <value>BackgroundRemover</value>
+  </data>
 </root>

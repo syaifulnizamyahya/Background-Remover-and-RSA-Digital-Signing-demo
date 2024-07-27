@@ -103,6 +103,9 @@ public partial class App : Application
         services.AddTransient<RsaDigitalSigningViewModel>();
         services.AddTransient<RsaDigitalSigningPage>();
 
+        services.AddTransient<BackgroundRemoverViewModel>();
+        services.AddTransient<BackgroundRemoverPage>();
+
         // Configuration
         services.Configure<AppConfig>(context.Configuration.GetSection(nameof(AppConfig)));
     }

@@ -54,6 +54,7 @@ public class PagesTests
         services.AddTransient<ContentGridViewModel>();
         services.AddTransient<BlankViewModel>();
         services.AddTransient<RsaDigitalSigningViewModel>();
+        services.AddTransient<BackgroundRemoverViewModel>();
 
         // Configuration
         services.Configure<AppConfig>(context.Configuration.GetSection(nameof(AppConfig)));
@@ -213,7 +214,7 @@ public class PagesTests
         }
     }
 
-    // TODO: Add tests for functionality you add to BlankViewModel.
+    // TODO: Add tests for functionality you add to RsaDigitalSigningViewModel.
     [Test]
     public void TestRsaDigitalSigningViewModelCreation()
     {
@@ -228,6 +229,28 @@ public class PagesTests
         {
             var pageType = pageService.GetPageType(typeof(RsaDigitalSigningViewModel).FullName);
             Assert.AreEqual(typeof(RsaDigitalSigningPage), pageType);
+        }
+        else
+        {
+            Assert.Fail($"Can't resolve {nameof(IPageService)}");
+        }
+    }
+
+    // TODO: Add tests for functionality you add to BackgroundRemoverViewModel.
+    [Test]
+    public void TestBackgroundRemoverViewModelCreation()
+    {
+        var vm = _host.Services.GetService(typeof(BackgroundRemoverViewModel));
+        Assert.IsNotNull(vm);
+    }
+
+    [Test]
+    public void TestGetBackgroundRemoverPageType()
+    {
+        if (_host.Services.GetService(typeof(IPageService)) is IPageService pageService)
+        {
+            var pageType = pageService.GetPageType(typeof(BackgroundRemoverViewModel).FullName);
+            Assert.AreEqual(typeof(BackgroundRemoverPage), pageType);
         }
         else
         {

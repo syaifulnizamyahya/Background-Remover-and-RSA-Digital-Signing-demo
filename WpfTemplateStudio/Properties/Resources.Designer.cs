@@ -70,6 +70,15 @@ namespace WpfTemplateStudio.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Background Remover.
+        /// </summary>
+        public static string BackgroundRemoverPageTitle {
+            get {
+                return ResourceManager.GetString("BackgroundRemoverPageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Blank.
         /// </summary>
         public static string BlankPageTitle {
@@ -282,6 +291,15 @@ namespace WpfTemplateStudio.Properties {
         public static string SettingsPageTitle {
             get {
                 return ResourceManager.GetString("SettingsPageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to BackgroundRemover.
+        /// </summary>
+        public static string ShellBackgroundRemoverPage {
+            get {
+                return ResourceManager.GetString("ShellBackgroundRemoverPage", resourceCulture);
             }
         }
         

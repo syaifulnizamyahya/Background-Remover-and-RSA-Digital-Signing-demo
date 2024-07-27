@@ -25,6 +25,7 @@ public class PageService : IPageService
         Configure<BlankViewModel, BlankPage>();
         Configure<SettingsViewModel, SettingsPage>();
         Configure<RsaDigitalSigningViewModel, RsaDigitalSigningPage>();
+        Configure<BackgroundRemoverViewModel, BackgroundRemoverPage>();
     }
 
     public Type GetPageType(string key)
