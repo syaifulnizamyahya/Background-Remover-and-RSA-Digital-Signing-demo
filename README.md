@@ -11,3 +11,4 @@ Best practices
 4. Resources for strings
 5. Service library
 6. Unit tests
+7. null checks
