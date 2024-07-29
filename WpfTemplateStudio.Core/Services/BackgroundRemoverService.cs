@@ -7,42 +7,56 @@ namespace WpfTemplateStudio.Core.Services
 {
     public static class BackgroundRemoverService
     {
+        public enum DeepLearningModel
+        {
+            u2net,
+            u2netp,
+            u2net_human_seg,
+            silueta,
+            isnet_general_use
+        }
+
         public static byte[] RemoveBackground(string inputPath)
         {
-            return RemoveBackground(inputPath, null);
+            return RemoveBackground(inputPath, null, null);
         }
 
         public static byte[] RemoveBackground(string inputPath, string outputPath)
         {
-            //input_path = 'D:\\Dev\\bestinet\\BackgroundRemoverAi\\ConsoleRembg\\Input\\000272_4_000272_MALE_25.jpg'
-            //output_path = 'D:\\Dev\\bestinet\\BackgroundRemoverAi\\ConsoleRembg\\Output\\000272_4_000272_MALE_25_output.png'
+            return RemoveBackground(inputPath, outputPath, null);
+        }
 
-            //with open(input_path, 'rb') as i:
-            //    with open(output_path, 'wb') as o:
-            //        input = i.read()
+        public static byte[] RemoveBackground(string inputPath, DeepLearningModel? model)
+        {
+            return RemoveBackground(inputPath, null, model);
+        }
 
-            //        output = remove(input)
-            //        o.write(output)
-            //#######################################################
-
+        public static byte[] RemoveBackground(string inputPath, string outputPath, DeepLearningModel? model)
+        {
             PythonInitializerService.Instance.Initialize();
             try
             {
                 using (Py.GIL())
                 {
-                    Console.WriteLine("Importing rembg module...");
                     dynamic rembg = Py.Import("rembg");
                     dynamic remove = rembg.remove;
+                    dynamic new_session = rembg.new_session;
 
-                    Console.WriteLine("Reading input image...");
                     byte[] inputBytes = File.ReadAllBytes(inputPath);
+                    byte[] outputBytes;
 
-                    Console.WriteLine("Calling rembg.remove function...");
-                    byte[] outputBytes = remove(inputBytes);
-
-                    if (outputPath != null)
+                    if (model == null)
                     {
-                        Console.WriteLine("Writing output image...");
+                        outputBytes = (byte[])rembg.remove(inputBytes);
+                    }
+                    else
+                    {
+                        dynamic newSession = new_session(model.ToString());
+                        outputBytes = (byte[])rembg.remove(inputBytes, session: newSession);
+                    }
+
+                    if (!String.IsNullOrEmpty(outputPath))
+                    {
                         File.WriteAllBytes(outputPath, outputBytes);
                     }
 
