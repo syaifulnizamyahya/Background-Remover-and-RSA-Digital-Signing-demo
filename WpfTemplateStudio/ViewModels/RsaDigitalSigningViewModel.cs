@@ -1,79 +1,48 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System.IO;
-using System.Security.Cryptography.X509Certificates;
 using System.Windows;
-using System.Windows.Input;
-using Windows.ApplicationModel.Background;
 using WpfTemplateStudio.Core.Services;
 
 namespace WpfTemplateStudio.ViewModels;
 
-public class RsaDigitalSigningViewModel : ObservableObject
+public partial class RsaDigitalSigningViewModel : ObservableObject
 {
-    private string _privateKey;
-    public string PrivateKey
-    {
-        get => _privateKey;
-        set => SetProperty(ref _privateKey, value);
-    }
+    [ObservableProperty]
+    private string privateKey;
 
-    private string _publicKey;
-    public string PublicKey
-    {
-        get => _publicKey;
-        set => SetProperty(ref _publicKey, value);
-    }
+    [ObservableProperty]
+    private string publicKey;
 
-    private string _dataToSign;
-    public string DataToSign
-    {
-        get => _dataToSign;
-        set => SetProperty(ref _dataToSign, value);
-    }
+    [ObservableProperty]
+    private string dataToSign;
 
-    private string _dataToVerify;
-    public string DataToVerify
-    {
-        get => _dataToVerify;
-        set => SetProperty(ref _dataToVerify, value);
-    }
+    [ObservableProperty]
+    private string dataToVerify;
 
-    private string _digitalSignature;
-    public string DigitalSignature
-    {
-        get => _digitalSignature;
-        set => SetProperty(ref _digitalSignature, value);
-    }
+    [ObservableProperty]
+    private string digitalSignature;
 
-    private string _verificationResult;
-    public string VerificationResult
-    {
-        get => _verificationResult;
-        set => SetProperty(ref _verificationResult, value);
-    }
+    [ObservableProperty]
+    private string verificationResult;
 
-    private byte[] _signedData;
+    private byte[] signedData;
 
     public RsaDigitalSigningViewModel()
     {
     }
 
-    private IAsyncRelayCommand generateKeyCommand;
-    public IAsyncRelayCommand GenerateKeyCommand => generateKeyCommand ??= new AsyncRelayCommand(GenerateKeyAsync);
-
+    [RelayCommand]
     private async Task GenerateKeyAsync()
     {
-        await Task.Run(() => { RsaDigitalSignService.RsaKeyGenerator(ref _publicKey, ref _privateKey); });
+        await Task.Run(() => { RsaDigitalSignService.RsaKeyGenerator(ref publicKey, ref privateKey); });
 
         // Since the update of the properties is not reflected in the UI, we need to force a refresh of the properties
         OnPropertyChanged(nameof(PublicKey));
         OnPropertyChanged(nameof(PrivateKey));
     }
 
-    private IAsyncRelayCommand addDataToSignCommand;
-    public IAsyncRelayCommand AddDataToSignCommand => addDataToSignCommand ??= new AsyncRelayCommand(AddDataToSign);
-
+    [RelayCommand]
     private async Task AddDataToSign()
     {
         var dialog = new Microsoft.Win32.OpenFileDialog();
@@ -90,12 +59,10 @@ public class RsaDigitalSigningViewModel : ObservableObject
         await SignData();
     }
 
-    private IAsyncRelayCommand signDataCommand;
-    public IAsyncRelayCommand SignDataCommand => signDataCommand ??= new AsyncRelayCommand(SignData);
-
+    [RelayCommand]
     private async Task SignData()
     {
-        if (_privateKey == null || _dataToSign == null)
+        if (PrivateKey == null || DataToSign == null)
         {
             MessageBox.Show("Private key or file to sign cannot be null.", "Getting Digital Signature Error", MessageBoxButton.OK, MessageBoxImage.Error);
             DigitalSignature = null;
@@ -110,14 +77,12 @@ public class RsaDigitalSigningViewModel : ObservableObject
 
         DigitalSignature = "Getting digital signature...";
         var fileContent = await File.ReadAllBytesAsync(DataToSign);
-        await Task.Run(() => { _signedData = RsaDigitalSignService.SignData(fileContent, _privateKey); });
+        await Task.Run(() => { signedData = RsaDigitalSignService.SignData(fileContent, PrivateKey); });
 
-        DigitalSignature = Convert.ToBase64String(_signedData);
+        DigitalSignature = Convert.ToBase64String(signedData);
     }
 
-    private IAsyncRelayCommand addDataToVerifyCommand;
-    public IAsyncRelayCommand AddDataToVerifyCommand => addDataToVerifyCommand ??= new AsyncRelayCommand(AddDataToVerify);
-
+    [RelayCommand]
     private Task AddDataToVerify()
     {
         var dialog = new Microsoft.Win32.OpenFileDialog();
@@ -130,12 +95,10 @@ public class RsaDigitalSigningViewModel : ObservableObject
         return Task.CompletedTask;
     }
 
-    private IAsyncRelayCommand verifyDataCommand;
-    public IAsyncRelayCommand VerifyDataCommand => verifyDataCommand ??= new AsyncRelayCommand(VerifyData);
-
+    [RelayCommand]
     private async Task VerifyData()
     {
-        if (_signedData == null || _publicKey == null || _dataToVerify == null)
+        if (signedData == null || PublicKey == null || DataToVerify == null)
         {
             MessageBox.Show("Public key or file to verify or digital signature cannot be null.", "Verification Error", MessageBoxButton.OK, MessageBoxImage.Error);
             VerificationResult = null;
@@ -152,7 +115,7 @@ public class RsaDigitalSigningViewModel : ObservableObject
         VerificationResult = "Verifying...";
         bool result = false;
         var fileContent = await File.ReadAllBytesAsync(DataToVerify);
-        await Task.Run(() => { result = RsaDigitalSignService.VerifyData(fileContent, _publicKey, _signedData); });
+        await Task.Run(() => { result = RsaDigitalSignService.VerifyData(fileContent, PublicKey, signedData); });
 
         if (result)
         {

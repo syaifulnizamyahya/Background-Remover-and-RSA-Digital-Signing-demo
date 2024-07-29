@@ -65,7 +65,8 @@ public class PagesTests
     public void TestWebViewViewModelCreation()
     {
         var vm = _host.Services.GetService(typeof(WebViewViewModel));
-        Assert.IsNotNull(vm);
+        Assert.That(vm, Is.Not.Null);
+        //Assert.IsNotNull(vm);
     }
 
     [Test]
@@ -74,7 +75,8 @@ public class PagesTests
         if (_host.Services.GetService(typeof(IPageService)) is IPageService pageService)
         {
             var pageType = pageService.GetPageType(typeof(WebViewViewModel).FullName);
-            Assert.AreEqual(typeof(WebViewPage), pageType);
+            Assert.That(pageType, Is.EqualTo(typeof(WebViewPage)));
+            //Assert.AreEqual(typeof(WebViewPage), pageType);
         }
         else
         {
@@ -87,7 +89,8 @@ public class PagesTests
     public void TestSettingsViewModelCreation()
     {
         var vm = _host.Services.GetService(typeof(SettingsViewModel));
-        Assert.IsNotNull(vm);
+        Assert.That(vm, Is.Not.Null);
+        //Assert.IsNotNull(vm);
     }
 
     [Test]
@@ -96,7 +99,8 @@ public class PagesTests
         if (_host.Services.GetService(typeof(IPageService)) is IPageService pageService)
         {
             var pageType = pageService.GetPageType(typeof(SettingsViewModel).FullName);
-            Assert.AreEqual(typeof(SettingsPage), pageType);
+            Assert.That(pageType, Is.EqualTo(typeof(SettingsPage)));
+            //Assert.AreEqual(typeof(SettingsPage), pageType);
         }
         else
         {
@@ -109,7 +113,8 @@ public class PagesTests
     public void TestMainViewModelCreation()
     {
         var vm = _host.Services.GetService(typeof(MainViewModel));
-        Assert.IsNotNull(vm);
+        Assert.That(vm, Is.Not.Null);
+        //Assert.IsNotNull(vm);
     }
 
     [Test]
@@ -118,7 +123,8 @@ public class PagesTests
         if (_host.Services.GetService(typeof(IPageService)) is IPageService pageService)
         {
             var pageType = pageService.GetPageType(typeof(MainViewModel).FullName);
-            Assert.AreEqual(typeof(MainPage), pageType);
+            Assert.That(pageType, Is.EqualTo(typeof(MainPage)));
+            //Assert.AreEqual(typeof(MainPage), pageType);
         }
         else
         {
@@ -131,7 +137,8 @@ public class PagesTests
     public void TestListDetailsViewModelCreation()
     {
         var vm = _host.Services.GetService(typeof(ListDetailsViewModel));
-        Assert.IsNotNull(vm);
+        Assert.That(vm, Is.Not.Null);
+        //Assert.IsNotNull(vm);
     }
 
     [Test]
@@ -140,7 +147,8 @@ public class PagesTests
         if (_host.Services.GetService(typeof(IPageService)) is IPageService pageService)
         {
             var pageType = pageService.GetPageType(typeof(ListDetailsViewModel).FullName);
-            Assert.AreEqual(typeof(ListDetailsPage), pageType);
+            Assert.That(pageType, Is.EqualTo(typeof(ListDetailsPage)));
+            //Assert.AreEqual(typeof(ListDetailsPage), pageType);
         }
         else
         {
@@ -153,7 +161,8 @@ public class PagesTests
     public void TestDataGridViewModelCreation()
     {
         var vm = _host.Services.GetService(typeof(DataGridViewModel));
-        Assert.IsNotNull(vm);
+        Assert.That(vm, Is.Not.Null);
+        //Assert.IsNotNull(vm);
     }
 
     [Test]
@@ -162,7 +171,8 @@ public class PagesTests
         if (_host.Services.GetService(typeof(IPageService)) is IPageService pageService)
         {
             var pageType = pageService.GetPageType(typeof(DataGridViewModel).FullName);
-            Assert.AreEqual(typeof(DataGridPage), pageType);
+            Assert.That(pageType, Is.EqualTo(typeof(DataGridPage)));
+            //Assert.AreEqual(typeof(DataGridPage), pageType);
         }
         else
         {
@@ -175,7 +185,8 @@ public class PagesTests
     public void TestContentGridViewModelCreation()
     {
         var vm = _host.Services.GetService(typeof(ContentGridViewModel));
-        Assert.IsNotNull(vm);
+        Assert.That(vm, Is.Not.Null);
+        //Assert.IsNotNull(vm);
     }
 
     [Test]
@@ -184,7 +195,8 @@ public class PagesTests
         if (_host.Services.GetService(typeof(IPageService)) is IPageService pageService)
         {
             var pageType = pageService.GetPageType(typeof(ContentGridViewModel).FullName);
-            Assert.AreEqual(typeof(ContentGridPage), pageType);
+            Assert.That(pageType, Is.EqualTo(typeof(ContentGridPage)));
+            //Assert.AreEqual(typeof(ContentGridPage), pageType);
         }
         else
         {
@@ -197,7 +209,8 @@ public class PagesTests
     public void TestBlankViewModelCreation()
     {
         var vm = _host.Services.GetService(typeof(BlankViewModel));
-        Assert.IsNotNull(vm);
+        Assert.That(vm, Is.Not.Null);
+        //Assert.IsNotNull(vm);
     }
 
     [Test]
@@ -206,7 +219,8 @@ public class PagesTests
         if (_host.Services.GetService(typeof(IPageService)) is IPageService pageService)
         {
             var pageType = pageService.GetPageType(typeof(BlankViewModel).FullName);
-            Assert.AreEqual(typeof(BlankPage), pageType);
+            Assert.That(pageType, Is.EqualTo(typeof(BlankPage)));
+            //Assert.AreEqual(typeof(BlankPage), pageType);
         }
         else
         {
@@ -219,7 +233,8 @@ public class PagesTests
     public void TestRsaDigitalSigningViewModelCreation()
     {
         var vm = _host.Services.GetService(typeof(RsaDigitalSigningViewModel));
-        Assert.IsNotNull(vm);
+        Assert.That(vm, Is.Not.Null);
+        //Assert.IsNotNull(vm);
     }
 
     [Test]
@@ -228,7 +243,8 @@ public class PagesTests
         if (_host.Services.GetService(typeof(IPageService)) is IPageService pageService)
         {
             var pageType = pageService.GetPageType(typeof(RsaDigitalSigningViewModel).FullName);
-            Assert.AreEqual(typeof(RsaDigitalSigningPage), pageType);
+            Assert.That(pageType, Is.EqualTo(typeof(RsaDigitalSigningPage)));
+            //Assert.AreEqual(typeof(RsaDigitalSigningPage), pageType);
         }
         else
         {
@@ -241,7 +257,8 @@ public class PagesTests
     public void TestBackgroundRemoverViewModelCreation()
     {
         var vm = _host.Services.GetService(typeof(BackgroundRemoverViewModel));
-        Assert.IsNotNull(vm);
+        Assert.That(vm, Is.Not.Null);
+        //Assert.IsNotNull(vm);
     }
 
     [Test]
@@ -250,7 +267,8 @@ public class PagesTests
         if (_host.Services.GetService(typeof(IPageService)) is IPageService pageService)
         {
             var pageType = pageService.GetPageType(typeof(BackgroundRemoverViewModel).FullName);
-            Assert.AreEqual(typeof(BackgroundRemoverPage), pageType);
+            Assert.That(pageType, Is.Not.Null);
+            //Assert.AreEqual(typeof(BackgroundRemoverPage), pageType);
         }
         else
         {

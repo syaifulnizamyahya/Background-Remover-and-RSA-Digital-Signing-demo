@@ -39,7 +39,8 @@ public class FileServiceTests
         {
             var jsonContentFile = File.ReadAllText(_filePath);
             var contentFile = JsonConvert.DeserializeObject<string>(jsonContentFile);
-            Assert.AreEqual(_fileData, contentFile);
+            Assert.That(contentFile, Is.EqualTo(_fileData));
+            //Assert.AreEqual(_fileData, contentFile);
         }
         else
         {
@@ -60,7 +61,8 @@ public class FileServiceTests
 
         var cacheData = fileService.Read<string>(_folderPath, _fileName);
 
-        Assert.AreEqual(_fileData, cacheData);
+        Assert.That(cacheData, Is.EqualTo(_fileData));
+        //Assert.AreEqual(_fileData, cacheData);
     }
 
     [Test]
@@ -76,7 +78,8 @@ public class FileServiceTests
 
         fileService.Delete(_folderPath, _fileName);
 
-        Assert.IsFalse(File.Exists(_filePath));
+        Assert.That(!File.Exists(_filePath));
+        //Assert.IsFalse(File.Exists(_filePath));
     }
 
     [TearDown]

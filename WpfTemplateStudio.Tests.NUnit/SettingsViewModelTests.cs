@@ -28,7 +28,8 @@ public class SettingsViewModelTests
         var settingsVm = new SettingsViewModel(mockAppConfig.Object, mockThemeSelectorService.Object, mockSystemService.Object, mockApplicationInfoService.Object);
         settingsVm.OnNavigatedTo(null);
 
-        Assert.AreEqual(AppTheme.Light, settingsVm.Theme);
+        Assert.That(settingsVm.Theme, Is.EqualTo(AppTheme.Light));
+        //Assert.AreEqual(AppTheme.Light, settingsVm.Theme);
     }
 
     [Test]
@@ -44,7 +45,8 @@ public class SettingsViewModelTests
         var settingsVm = new SettingsViewModel(mockAppConfig.Object, mockThemeSelectorService.Object, mockSystemService.Object, mockApplicationInfoService.Object);
         settingsVm.OnNavigatedTo(null);
 
-        Assert.AreEqual($"WpfTemplateStudio - {testVersion}", settingsVm.VersionDescription);
+        Assert.That(settingsVm.VersionDescription, Is.EqualTo($"WpfTemplateStudio - {testVersion}"));
+        //Assert.AreEqual($"WpfTemplateStudio - {testVersion}", settingsVm.VersionDescription);
     }
 
     [Test]

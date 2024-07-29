@@ -24,7 +24,8 @@ public class RsaDigitalSignServiceTests
         bool result = RsaDigitalSignService.VerifyData(dataToVerify, publicKey, signedData);
 
         //Assert
-        Assert.AreEqual(expectedResult, result);
+        Assert.That(result, Is.EqualTo(expectedResult));
+        //Assert.AreEqual(expectedResult, result);
 
         TestContext.Out.WriteLine("Private key: " + privateKey);
         TestContext.Out.WriteLine("Public key: " + publicKey);

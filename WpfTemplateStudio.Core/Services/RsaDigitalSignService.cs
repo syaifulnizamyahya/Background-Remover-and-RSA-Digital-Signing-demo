@@ -1,7 +1,4 @@
 ﻿using System.Security.Cryptography;
-using System.Text;
-
-using Newtonsoft.Json;
 
 using WpfTemplateStudio.Core.Contracts.Services;
 
