@@ -79,13 +79,14 @@ public partial class BackgroundRemoverViewModel : ObservableObject
             {
                 using (MemoryStream memoryStream = new MemoryStream(result))
                 {
-                    RemovedBackgroundImage1 = new BitmapImage();
-                    RemovedBackgroundImage1.BeginInit();
-                    RemovedBackgroundImage1.CacheOption = BitmapCacheOption.OnLoad;
-                    RemovedBackgroundImage1.StreamSource = memoryStream;
-                    RemovedBackgroundImage1.EndInit();
+                    BitmapImage bitmap = new BitmapImage();
+                    bitmap.BeginInit();
+                    bitmap.CacheOption = BitmapCacheOption.OnLoad;
+                    bitmap.StreamSource = memoryStream;
+                    bitmap.EndInit();
+                    bitmap.Freeze();
+                    RemovedBackgroundImage1 = bitmap;
                 }
-                RemovedBackgroundImage1.Freeze();
             }
         });
     }

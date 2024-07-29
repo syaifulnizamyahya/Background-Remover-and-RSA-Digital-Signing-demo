@@ -33,7 +33,10 @@
                 </Grid.RowDefinitions>
                 <GroupBox Grid.Row="0" Header="Reference image">
                     <StackPanel>
-                        <Image Source="{Binding SelectedImage}" />
+                        <Image
+                            MinWidth="256"
+                            MinHeight="256"
+                            Source="{Binding SelectedImage}" />
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition />
@@ -57,16 +60,28 @@
                                 Source="{Binding RemovedBackgroundImage1}" />
                         </GroupBox>
                         <GroupBox Grid.Row="0" Header="Method 2">
-                            <Image MinWidth="256" MinHeight="256" />
+                            <!--<Image
+                                MinWidth="256"
+                                MinHeight="256"
+                                Source="{Binding RemovedBackgroundImage1}" />-->
                         </GroupBox>
                         <GroupBox Grid.Row="0" Header="Method 3">
-                            <Image MinWidth="256" MinHeight="256" />
+                            <!--<Image
+                                MinWidth="256"
+                                MinHeight="256"
+                                Source="{Binding RemovedBackgroundImage1}" />-->
                         </GroupBox>
                         <GroupBox Grid.Row="0" Header="Method 4">
-                            <Image MinWidth="256" MinHeight="256" />
+                            <!--<Image
+                                MinWidth="256"
+                                MinHeight="256"
+                                Source="{Binding RemovedBackgroundImage1}" />-->
                         </GroupBox>
                         <GroupBox Grid.Row="0" Header="Method 5">
-                            <Image MinWidth="256" MinHeight="256" />
+                            <!--<Image
+                                MinWidth="256"
+                                MinHeight="256"
+                                Source="{Binding RemovedBackgroundImage1}" />-->
                         </GroupBox>
                     </StackPanel>
                 </ScrollViewer>

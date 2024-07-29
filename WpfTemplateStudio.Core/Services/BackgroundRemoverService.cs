@@ -33,6 +33,11 @@ namespace WpfTemplateStudio.Core.Services
 
         public static byte[] RemoveBackground(string inputPath, string outputPath, DeepLearningModel? model)
         {
+            if(String.IsNullOrEmpty(inputPath))
+            {
+                return null;
+            }
+
             PythonInitializerService.Instance.Initialize();
             try
             {
