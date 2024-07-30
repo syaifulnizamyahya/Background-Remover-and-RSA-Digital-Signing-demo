@@ -276,4 +276,34 @@
   <data name="BackgroundRemoverPage_RemoveBackground" xml:space="preserve">
     <value>Remove background</value>
   </data>
+  <data name="RsaDigitalSigningViewModel_SignData_PrivateKeyOrFileToSignCannotBeNull" xml:space="preserve">
+    <value>Private key or file to sign cannot be null.</value>
+  </data>
+  <data name="RsaDigitalSigningViewModel_SignData_GettingDigitalSignatureError" xml:space="preserve">
+    <value>Getting Digital Signature Error</value>
+  </data>
+  <data name="RsaDigitalSigningViewModel_SignData_FileToSignDoesNotExist" xml:space="preserve">
+    <value>File to sign does not exist.</value>
+  </data>
+  <data name="RsaDigitalSigningViewModel_SignData_GettingDigitalSignature" xml:space="preserve">
+    <value>Getting digital signature...</value>
+  </data>
+  <data name="RsaDigitalSigningViewModel_VerifyData_PublicKeyOrFileToVerifyOrDigitalSignatureCannotBeNull" xml:space="preserve">
+    <value>Public key or file to verify or digital signature cannot be null.</value>
+  </data>
+  <data name="RsaDigitalSigningViewModel_VerifyData_VerificationError" xml:space="preserve">
+    <value>Verification Error</value>
+  </data>
+  <data name="RsaDigitalSigningViewModel_VerifyData_FileToVerifyDoesNotExist" xml:space="preserve">
+    <value>File to verify does not exist.</value>
+  </data>
+  <data name="RsaDigitalSigningViewModel_VerifyData_Verifying" xml:space="preserve">
+    <value>Verifying...</value>
+  </data>
+  <data name="RsaDigitalSigningViewModel_VerifyData_SignatureVerified" xml:space="preserve">
+    <value>Signature verified</value>
+  </data>
+  <data name="RsaDigitalSigningViewModel_VerifyData_SignatureNotVerified" xml:space="preserve">
+    <value>Signature not verified</value>
+  </data>
 </root>

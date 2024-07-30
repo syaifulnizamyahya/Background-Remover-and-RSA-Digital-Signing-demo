@@ -64,18 +64,18 @@ public partial class RsaDigitalSigningViewModel : ObservableObject
     {
         if (PrivateKey == null || DataToSign == null)
         {
-            MessageBox.Show("Private key or file to sign cannot be null.", "Getting Digital Signature Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            MessageBox.Show(WpfTemplateStudio.Properties.Resources.RsaDigitalSigningViewModel_SignData_PrivateKeyOrFileToSignCannotBeNull, WpfTemplateStudio.Properties.Resources.RsaDigitalSigningViewModel_SignData_GettingDigitalSignatureError, MessageBoxButton.OK, MessageBoxImage.Error);
             DigitalSignature = null;
             return;
         }
         if (!System.IO.File.Exists(DataToSign))
         {
-            MessageBox.Show("File to sign does not exist.", "Getting Digital Signature Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            MessageBox.Show(WpfTemplateStudio.Properties.Resources.RsaDigitalSigningViewModel_SignData_FileToSignDoesNotExist, WpfTemplateStudio.Properties.Resources.RsaDigitalSigningViewModel_SignData_GettingDigitalSignatureError, MessageBoxButton.OK, MessageBoxImage.Error);
             DigitalSignature = null;
             return;
         }
 
-        DigitalSignature = "Getting digital signature...";
+        DigitalSignature = WpfTemplateStudio.Properties.Resources.RsaDigitalSigningViewModel_SignData_GettingDigitalSignature;
         var fileContent = await File.ReadAllBytesAsync(DataToSign);
         await Task.Run(() => { signedData = RsaDigitalSignService.SignData(fileContent, PrivateKey); });
 
@@ -100,30 +100,30 @@ public partial class RsaDigitalSigningViewModel : ObservableObject
     {
         if (signedData == null || PublicKey == null || DataToVerify == null)
         {
-            MessageBox.Show("Public key or file to verify or digital signature cannot be null.", "Verification Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            MessageBox.Show(WpfTemplateStudio.Properties.Resources.RsaDigitalSigningViewModel_VerifyData_PublicKeyOrFileToVerifyOrDigitalSignatureCannotBeNull, WpfTemplateStudio.Properties.Resources.RsaDigitalSigningViewModel_VerifyData_VerificationError, MessageBoxButton.OK, MessageBoxImage.Error);
             VerificationResult = null;
             return;
         }
 
         if (!System.IO.File.Exists(DataToVerify))
         {
-            MessageBox.Show("File to verify does not exist.", "Verification Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            MessageBox.Show(WpfTemplateStudio.Properties.Resources.RsaDigitalSigningViewModel_VerifyData_FileToVerifyDoesNotExist, WpfTemplateStudio.Properties.Resources.RsaDigitalSigningViewModel_VerifyData_VerificationError, MessageBoxButton.OK, MessageBoxImage.Error);
             VerificationResult = null;
             return;
         }
 
-        VerificationResult = "Verifying...";
+        VerificationResult = WpfTemplateStudio.Properties.Resources.RsaDigitalSigningViewModel_VerifyData_Verifying;
         bool result = false;
         var fileContent = await File.ReadAllBytesAsync(DataToVerify);
         await Task.Run(() => { result = RsaDigitalSignService.VerifyData(fileContent, PublicKey, signedData); });
 
         if (result)
         {
-            VerificationResult = "Signature verified";
+            VerificationResult = WpfTemplateStudio.Properties.Resources.RsaDigitalSigningViewModel_VerifyData_SignatureVerified;
         }
         else
         {
-            VerificationResult = "Signature not verified";
+            VerificationResult = WpfTemplateStudio.Properties.Resources.RsaDigitalSigningViewModel_VerifyData_SignatureNotVerified;
         }
     }
 }

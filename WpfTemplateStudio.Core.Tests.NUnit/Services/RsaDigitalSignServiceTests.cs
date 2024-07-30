@@ -1,8 +1,4 @@
-﻿using System.IO;
-
-using Newtonsoft.Json;
-
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using WpfTemplateStudio.Core.Services;
 
 namespace WpfTemplateStudio.Core.Tests.NUnit.Services;

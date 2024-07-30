@@ -105,4 +105,3 @@ public partial class BackgroundRemoverViewModel : ObservableObject
         StatusMessage = WpfTemplateStudio.Properties.Resources.BackgroundRemoverViewModel_RemoveBackgroundAsync_BackgroundRemoved;
     }
 }
-

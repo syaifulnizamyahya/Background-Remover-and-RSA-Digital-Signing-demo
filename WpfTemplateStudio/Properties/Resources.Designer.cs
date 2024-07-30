@@ -304,6 +304,97 @@ namespace WpfTemplateStudio.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to File to sign does not exist..
+        /// </summary>
+        public static string RsaDigitalSigningViewModel_SignData_FileToSignDoesNotExist {
+            get {
+                return ResourceManager.GetString("RsaDigitalSigningViewModel_SignData_FileToSignDoesNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Getting digital signature....
+        /// </summary>
+        public static string RsaDigitalSigningViewModel_SignData_GettingDigitalSignature {
+            get {
+                return ResourceManager.GetString("RsaDigitalSigningViewModel_SignData_GettingDigitalSignature", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Getting Digital Signature Error.
+        /// </summary>
+        public static string RsaDigitalSigningViewModel_SignData_GettingDigitalSignatureError {
+            get {
+                return ResourceManager.GetString("RsaDigitalSigningViewModel_SignData_GettingDigitalSignatureError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Private key or file to sign cannot be null..
+        /// </summary>
+        public static string RsaDigitalSigningViewModel_SignData_PrivateKeyOrFileToSignCannotBeNull {
+            get {
+                return ResourceManager.GetString("RsaDigitalSigningViewModel_SignData_PrivateKeyOrFileToSignCannotBeNull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to File to verify does not exist..
+        /// </summary>
+        public static string RsaDigitalSigningViewModel_VerifyData_FileToVerifyDoesNotExist {
+            get {
+                return ResourceManager.GetString("RsaDigitalSigningViewModel_VerifyData_FileToVerifyDoesNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Public key or file to verify or digital signature cannot be null..
+        /// </summary>
+        public static string RsaDigitalSigningViewModel_VerifyData_PublicKeyOrFileToVerifyOrDigitalSignatureCannotBeNull {
+            get {
+                return ResourceManager.GetString("RsaDigitalSigningViewModel_VerifyData_PublicKeyOrFileToVerifyOrDigitalSignatureCa" +
+                        "nnotBeNull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Signature not verified.
+        /// </summary>
+        public static string RsaDigitalSigningViewModel_VerifyData_SignatureNotVerified {
+            get {
+                return ResourceManager.GetString("RsaDigitalSigningViewModel_VerifyData_SignatureNotVerified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Signature verified.
+        /// </summary>
+        public static string RsaDigitalSigningViewModel_VerifyData_SignatureVerified {
+            get {
+                return ResourceManager.GetString("RsaDigitalSigningViewModel_VerifyData_SignatureVerified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Verification Error.
+        /// </summary>
+        public static string RsaDigitalSigningViewModel_VerifyData_VerificationError {
+            get {
+                return ResourceManager.GetString("RsaDigitalSigningViewModel_VerifyData_VerificationError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Verifying....
+        /// </summary>
+        public static string RsaDigitalSigningViewModel_VerifyData_Verifying {
+            get {
+                return ResourceManager.GetString("RsaDigitalSigningViewModel_VerifyData_Verifying", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Settings page placeholder text.  Your app description goes here..
         /// </summary>
         public static string SettingsPageAboutText {

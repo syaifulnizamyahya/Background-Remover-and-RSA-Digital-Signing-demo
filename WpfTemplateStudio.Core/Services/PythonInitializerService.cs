@@ -81,7 +81,7 @@ namespace WpfTemplateStudio.Core.Services
         }
 
         /// <summary>
-        /// Initialize Phyton
+        /// Initialize Phyton and return Pyhton version if successfull
         /// </summary>
         /// <returns>Phyton version</returns>
         /// <exception cref="Exception"></exception>
