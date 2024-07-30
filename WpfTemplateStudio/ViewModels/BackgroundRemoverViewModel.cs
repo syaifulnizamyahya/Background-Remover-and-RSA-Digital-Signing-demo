@@ -1,12 +1,9 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.Win32;
-using System.Collections;
 using System.Collections.ObjectModel;
 using System.IO;
-using System.Security.Cryptography.X509Certificates;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using WpfTemplateStudio.Core.Services;
 
 namespace WpfTemplateStudio.ViewModels;
@@ -15,7 +12,7 @@ public partial class BackgroundRemoverViewModel : ObservableObject
 {
     public BackgroundRemoverViewModel()
     {
-        Images = new ObservableCollection<BitmapImage>();
+        Images = [];
     }
 
     [ObservableProperty]
@@ -51,7 +48,7 @@ public partial class BackgroundRemoverViewModel : ObservableObject
                 bitmap.BeginInit();
                 bitmap.UriSource = new Uri(FilePath);
                 bitmap.EndInit();
-                bitmap.Freeze(); 
+                bitmap.Freeze();
                 SelectedImage = bitmap;
             }
         });
@@ -62,11 +59,19 @@ public partial class BackgroundRemoverViewModel : ObservableObject
     [RelayCommand]
     private async Task RemoveBackgroundAsync()
     {
-        for (int i = 0; i < 10; i++)
+        if (File.Exists(FilePath) == false)
         {
-            await Task.Run(() =>
+            StatusMessage = "Image not found";
+            return;
+        }
+
+        StatusMessage = "Removing background...";
+        await Task.Run(() =>
+        {
+            int availableModels = Enum.GetValues(typeof(BackgroundRemoverService.DeepLearningModel)).Length;
+            Parallel.For(0, availableModels, i =>
             {
-                byte[] imageBytes = File.ReadAllBytes(FilePath);
+                byte[] imageBytes = BackgroundRemoverService.RemoveBackground(FilePath, (BackgroundRemoverService.DeepLearningModel)i);
 
                 var bitmapImage = new BitmapImage();
                 using (var memoryStream = new MemoryStream(imageBytes))
@@ -77,15 +82,16 @@ public partial class BackgroundRemoverViewModel : ObservableObject
                     bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
                     bitmapImage.EndInit();
                     bitmapImage.Freeze();
-
                 }
 
                 App.Current.Dispatcher.Invoke(() =>
                 {
                     Images.Add(bitmapImage);
+                    StatusMessage = $"Background removed using {((BackgroundRemoverService.DeepLearningModel)i).ToString()} model";
                 });
             });
-        }
+        });
+        StatusMessage = "Background removed";
     }
 }
 
