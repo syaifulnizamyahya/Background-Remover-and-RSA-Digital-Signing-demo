@@ -1,10 +1,5 @@
-﻿using Newtonsoft.Json;
-using Python.Runtime;
+﻿using Python.Runtime;
 using System.Diagnostics;
-using System.IO;
-using System.Text;
-
-using WpfTemplateStudio.Core;
 
 namespace WpfTemplateStudio.Core.Services
 {

@@ -1,5 +1,4 @@
-﻿using WpfTemplateStudio.Core.Services;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
 namespace WpfTemplateStudio.Core.Services.Tests
 {
