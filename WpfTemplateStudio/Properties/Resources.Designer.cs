@@ -79,6 +79,60 @@ namespace WpfTemplateStudio.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Background removed.
+        /// </summary>
+        public static string BackgroundRemoverViewModel_RemoveBackgroundAsync_BackgroundRemoved {
+            get {
+                return ResourceManager.GetString("BackgroundRemoverViewModel_RemoveBackgroundAsync_BackgroundRemoved", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Image not found.
+        /// </summary>
+        public static string BackgroundRemoverViewModel_RemoveBackgroundAsync_ImageNotFound {
+            get {
+                return ResourceManager.GetString("BackgroundRemoverViewModel_RemoveBackgroundAsync_ImageNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing background....
+        /// </summary>
+        public static string BackgroundRemoverViewModel_RemoveBackgroundAsync_RemovingBackground {
+            get {
+                return ResourceManager.GetString("BackgroundRemoverViewModel_RemoveBackgroundAsync_RemovingBackground", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Image files (*.jpg, *.jpeg, *.png)|*.jpg;*.jpeg;*.png.
+        /// </summary>
+        public static string BackgroundRemoverViewModel_SelectImageAsync_ImageFilter {
+            get {
+                return ResourceManager.GetString("BackgroundRemoverViewModel_SelectImageAsync_ImageFilter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Image selected.
+        /// </summary>
+        public static string BackgroundRemoverViewModel_SelectImageAsync_ImageSelected {
+            get {
+                return ResourceManager.GetString("BackgroundRemoverViewModel_SelectImageAsync_ImageSelected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Selecting image....
+        /// </summary>
+        public static string BackgroundRemoverViewModel_SelectImageAsync_SelectingImage {
+            get {
+                return ResourceManager.GetString("BackgroundRemoverViewModel_SelectImageAsync_SelectingImage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Blank.
         /// </summary>
         public static string BlankPageTitle {

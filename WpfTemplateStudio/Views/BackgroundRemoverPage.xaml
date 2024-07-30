@@ -32,11 +32,11 @@
                     <StackPanel>
                         <Image Source="{Binding SelectedImage}" />
                         <Button Command="{Binding SelectImageCommand}" Content="Select image" />
-                        <TextBox IsReadOnly="True" Text="{Binding StatusMessage}" />
                         <TextBox Text="{Binding FilePath}" />
+                        <TextBox IsReadOnly="True" Text="{Binding StatusMessage}" />
                         <Button Command="{Binding RemoveBackgroundCommand}" Content="Remove background" />
 
-                        <mah:FlipView ItemsSource="{Binding Images}">
+                        <mah:FlipView x:Name="RemovedBackgroundFlipView" ItemsSource="{Binding Images}">
                             <mah:FlipView.ItemTemplate>
                                 <DataTemplate>
                                     <Image Source="{Binding}" />

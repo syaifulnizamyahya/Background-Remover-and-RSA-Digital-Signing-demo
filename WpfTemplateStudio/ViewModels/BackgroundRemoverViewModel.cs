@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.Win32;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.IO;
 using System.Windows.Media.Imaging;
 using WpfTemplateStudio.Core.Services;
@@ -30,13 +31,13 @@ public partial class BackgroundRemoverViewModel : ObservableObject
     [RelayCommand]
     private async Task SelectImageAsync()
     {
-        StatusMessage = "Selecting image...";
+        StatusMessage = WpfTemplateStudio.Properties.Resources.BackgroundRemoverViewModel_SelectImageAsync_SelectingImage;
 
         await Task.Run(() =>
         {
             var openFileDialog = new OpenFileDialog
             {
-                Filter = "Image files (*.jpg, *.jpeg, *.png)|*.jpg;*.jpeg;*.png"
+                Filter = WpfTemplateStudio.Properties.Resources.BackgroundRemoverViewModel_SelectImageAsync_ImageFilter
             };
 
             bool? result = openFileDialog.ShowDialog();
@@ -53,7 +54,7 @@ public partial class BackgroundRemoverViewModel : ObservableObject
             }
         });
 
-        StatusMessage = "Image selected";
+        StatusMessage = WpfTemplateStudio.Properties.Resources.BackgroundRemoverViewModel_SelectImageAsync_ImageSelected;
     }
 
     [RelayCommand]
@@ -61,11 +62,11 @@ public partial class BackgroundRemoverViewModel : ObservableObject
     {
         if (File.Exists(FilePath) == false)
         {
-            StatusMessage = "Image not found";
+            StatusMessage = WpfTemplateStudio.Properties.Resources.BackgroundRemoverViewModel_RemoveBackgroundAsync_ImageNotFound;
             return;
         }
 
-        StatusMessage = "Removing background...";
+        StatusMessage = WpfTemplateStudio.Properties.Resources.BackgroundRemoverViewModel_RemoveBackgroundAsync_RemovingBackground;
         await Task.Run(() =>
         {
             int availableModels = Enum.GetValues(typeof(BackgroundRemoverService.DeepLearningModel)).Length;
@@ -86,12 +87,20 @@ public partial class BackgroundRemoverViewModel : ObservableObject
 
                 App.Current.Dispatcher.Invoke(() =>
                 {
-                    Images.Add(bitmapImage);
+                    if (Images.Count >= availableModels)
+                    {
+                        Images[i] = bitmapImage;
+                    }
+                    else
+                    {
+                        Images.Add(bitmapImage);
+                    }
                     StatusMessage = $"Background removed using {((BackgroundRemoverService.DeepLearningModel)i).ToString()} model";
+                    Task.Delay(100);
                 });
             });
         });
-        StatusMessage = "Background removed";
+        StatusMessage = WpfTemplateStudio.Properties.Resources.BackgroundRemoverViewModel_RemoveBackgroundAsync_BackgroundRemoved;
     }
 }
 

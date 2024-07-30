@@ -246,4 +246,22 @@
   <data name="ShellBackgroundRemoverPage" xml:space="preserve">
     <value>BackgroundRemover</value>
   </data>
+  <data name="BackgroundRemoverViewModel_SelectImageAsync_SelectingImage" xml:space="preserve">
+    <value>Selecting image...</value>
+  </data>
+  <data name="BackgroundRemoverViewModel_SelectImageAsync_ImageFilter" xml:space="preserve">
+    <value>Image files (*.jpg, *.jpeg, *.png)|*.jpg;*.jpeg;*.png</value>
+  </data>
+  <data name="BackgroundRemoverViewModel_SelectImageAsync_ImageSelected" xml:space="preserve">
+    <value>Image selected</value>
+  </data>
+  <data name="BackgroundRemoverViewModel_RemoveBackgroundAsync_ImageNotFound" xml:space="preserve">
+    <value>Image not found</value>
+  </data>
+  <data name="BackgroundRemoverViewModel_RemoveBackgroundAsync_RemovingBackground" xml:space="preserve">
+    <value>Removing background...</value>
+  </data>
+  <data name="BackgroundRemoverViewModel_RemoveBackgroundAsync_BackgroundRemoved" xml:space="preserve">
+    <value>Background removed</value>
+  </data>
 </root>
