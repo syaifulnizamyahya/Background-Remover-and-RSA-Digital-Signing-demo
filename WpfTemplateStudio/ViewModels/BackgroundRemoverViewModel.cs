@@ -72,7 +72,9 @@ public partial class BackgroundRemoverViewModel : ObservableObject
             int availableModels = Enum.GetValues(typeof(BackgroundRemoverService.DeepLearningModel)).Length;
             Parallel.For(0, availableModels, i =>
             {
+                var timeTaken = System.Diagnostics.Stopwatch.StartNew();
                 byte[] imageBytes = BackgroundRemoverService.RemoveBackground(FilePath, (BackgroundRemoverService.DeepLearningModel)i);
+                timeTaken.Stop();
 
                 var bitmapImage = new BitmapImage();
                 using (var memoryStream = new MemoryStream(imageBytes))
@@ -95,7 +97,7 @@ public partial class BackgroundRemoverViewModel : ObservableObject
                     {
                         Images.Add(bitmapImage);
                     }
-                    StatusMessage = $"Background removed using {((BackgroundRemoverService.DeepLearningModel)i).ToString()} model";
+                    StatusMessage = $"Background removed using {((BackgroundRemoverService.DeepLearningModel)i).ToString()} model in {timeTaken.ElapsedMilliseconds}ms";
                     Task.Delay(100);
                 });
             });

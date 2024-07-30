@@ -27,26 +27,63 @@
                 The Mahapps Gray10 color represents where you should place your content.
                 Place your content here.
             -->
-            <Grid>
-                <ScrollViewer>
-                    <StackPanel>
-                        <Image Source="{Binding SelectedImage}" />
-                        <Button Command="{Binding SelectImageCommand}" Content="Select image" />
-                        <TextBox Text="{Binding FilePath}" />
-                        <TextBox IsReadOnly="True" Text="{Binding StatusMessage}" />
-                        <Button Command="{Binding RemoveBackgroundCommand}" Content="Remove background" />
+            <ScrollViewer>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
 
-                        <mah:FlipView x:Name="RemovedBackgroundFlipView" ItemsSource="{Binding Images}">
+                    <GroupBox
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Header="{x:Static properties:Resources.BackgroundRemoverPage_ReferenceImage}" Margin="4,4,4,4">
+                        <Image Source="{Binding SelectedImage}" />
+                    </GroupBox>
+                    <Button Margin="4,4,4,4"
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Command="{Binding SelectImageCommand}"
+                        Content="{x:Static properties:Resources.BackgroundRemoverPage_SelectImage}" />
+
+                    <GroupBox
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Header="{x:Static properties:Resources.BackgroundRemoverPage_RemovedBackground}" Margin="4,4,4,4">
+                        <mah:FlipView
+                            IsBannerEnabled="False"
+                            ItemsSource="{Binding Images}">
                             <mah:FlipView.ItemTemplate>
                                 <DataTemplate>
                                     <Image Source="{Binding}" />
                                 </DataTemplate>
                             </mah:FlipView.ItemTemplate>
                         </mah:FlipView>
+                    </GroupBox>
+                    <Button Margin="4,4,4,4"
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        VerticalAlignment="Top"
+                        Command="{Binding RemoveBackgroundCommand}"
+                        Content="{x:Static properties:Resources.BackgroundRemoverPage_RemoveBackground}" />
 
-                    </StackPanel>
-                </ScrollViewer>
-            </Grid>
+                    <TextBox Margin="4,4,4,4"
+                        Grid.Row="2"
+                        Grid.ColumnSpan="2"
+                        Text="{Binding FilePath}" />
+                    <TextBox Margin="4,4,4,4"
+                        Grid.Row="3"
+                        Grid.ColumnSpan="2"
+                        IsReadOnly="True"
+                        Text="{Binding StatusMessage}" />
+                </Grid>
+            </ScrollViewer>
         </Grid>
     </Grid>
 </Page>

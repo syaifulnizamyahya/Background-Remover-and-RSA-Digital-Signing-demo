@@ -264,4 +264,16 @@
   <data name="BackgroundRemoverViewModel_RemoveBackgroundAsync_BackgroundRemoved" xml:space="preserve">
     <value>Background removed</value>
   </data>
+  <data name="BackgroundRemoverPage_ReferenceImage" xml:space="preserve">
+    <value>Reference Image</value>
+  </data>
+  <data name="BackgroundRemoverPage_SelectImage" xml:space="preserve">
+    <value>Select image</value>
+  </data>
+  <data name="BackgroundRemoverPage_RemovedBackground" xml:space="preserve">
+    <value>Removed Background</value>
+  </data>
+  <data name="BackgroundRemoverPage_RemoveBackground" xml:space="preserve">
+    <value>Remove background</value>
+  </data>
 </root>

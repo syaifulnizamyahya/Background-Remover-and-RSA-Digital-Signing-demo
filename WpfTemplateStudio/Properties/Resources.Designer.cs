@@ -70,6 +70,42 @@ namespace WpfTemplateStudio.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Reference Image.
+        /// </summary>
+        public static string BackgroundRemoverPage_ReferenceImage {
+            get {
+                return ResourceManager.GetString("BackgroundRemoverPage_ReferenceImage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove background.
+        /// </summary>
+        public static string BackgroundRemoverPage_RemoveBackground {
+            get {
+                return ResourceManager.GetString("BackgroundRemoverPage_RemoveBackground", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removed Background.
+        /// </summary>
+        public static string BackgroundRemoverPage_RemovedBackground {
+            get {
+                return ResourceManager.GetString("BackgroundRemoverPage_RemovedBackground", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select image.
+        /// </summary>
+        public static string BackgroundRemoverPage_SelectImage {
+            get {
+                return ResourceManager.GetString("BackgroundRemoverPage_SelectImage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Background Remover.
         /// </summary>
         public static string BackgroundRemoverPageTitle {
