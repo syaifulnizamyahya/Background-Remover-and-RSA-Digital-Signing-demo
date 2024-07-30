@@ -2,9 +2,11 @@
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.Win32;
 using System.Collections;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Security.Cryptography.X509Certificates;
 using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
 using WpfTemplateStudio.Core.Services;
 
 namespace WpfTemplateStudio.ViewModels;
@@ -13,6 +15,7 @@ public partial class BackgroundRemoverViewModel : ObservableObject
 {
     public BackgroundRemoverViewModel()
     {
+        Images = new ObservableCollection<BitmapImage>();
     }
 
     [ObservableProperty]
@@ -22,19 +25,7 @@ public partial class BackgroundRemoverViewModel : ObservableObject
     private BitmapImage selectedImage;
 
     [ObservableProperty]
-    private BitmapImage removedBackgroundImage1;
-
-    [ObservableProperty]
-    private BitmapImage removedBackgroundImage2;
-
-    [ObservableProperty]
-    private BitmapImage removedBackgroundImage3;
-
-    [ObservableProperty]
-    private BitmapImage removedBackgroundImage4;
-
-    [ObservableProperty]
-    private BitmapImage removedBackgroundImage5;
+    private ObservableCollection<BitmapImage> images;
 
     [ObservableProperty]
     private string filePath;
@@ -71,24 +62,30 @@ public partial class BackgroundRemoverViewModel : ObservableObject
     [RelayCommand]
     private async Task RemoveBackgroundAsync()
     {
-        await Task.Run(() =>
+        for (int i = 0; i < 10; i++)
         {
-            var result = BackgroundRemoverService.RemoveBackground(FilePath);
-
-            if (result != null)
+            await Task.Run(() =>
             {
-                using (MemoryStream memoryStream = new MemoryStream(result))
+                byte[] imageBytes = File.ReadAllBytes(FilePath);
+
+                var bitmapImage = new BitmapImage();
+                using (var memoryStream = new MemoryStream(imageBytes))
                 {
-                    BitmapImage bitmap = new BitmapImage();
-                    bitmap.BeginInit();
-                    bitmap.CacheOption = BitmapCacheOption.OnLoad;
-                    bitmap.StreamSource = memoryStream;
-                    bitmap.EndInit();
-                    bitmap.Freeze();
-                    RemovedBackgroundImage1 = bitmap;
+                    memoryStream.Position = 0;
+                    bitmapImage.BeginInit();
+                    bitmapImage.StreamSource = memoryStream;
+                    bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
+                    bitmapImage.EndInit();
+                    bitmapImage.Freeze();
+
                 }
-            }
-        });
+
+                App.Current.Dispatcher.Invoke(() =>
+                {
+                    Images.Add(bitmapImage);
+                });
+            });
+        }
     }
 }
 
