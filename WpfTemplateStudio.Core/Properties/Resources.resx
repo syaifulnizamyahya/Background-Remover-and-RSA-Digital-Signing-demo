@@ -138,4 +138,10 @@
   <data name="BackgroundRemoverService_RemoveBackground_FailedToRemoveBackgroud" xml:space="preserve">
     <value>Failed to remove backgroud</value>
   </data>
+  <data name="ObjectSerializer_ByteArrayToObject_DeserializationFailed" xml:space="preserve">
+    <value>Deserialization failed.</value>
+  </data>
+  <data name="ObjectSerializer_ObjectToByteArray_SerializationFailed" xml:space="preserve">
+    <value>Serialization failed.</value>
+  </data>
 </root>

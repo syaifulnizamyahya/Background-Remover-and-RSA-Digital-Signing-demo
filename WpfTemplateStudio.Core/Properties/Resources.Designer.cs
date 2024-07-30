@@ -70,6 +70,24 @@ namespace WpfTemplateStudio.Core.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Deserialization failed..
+        /// </summary>
+        public static string ObjectSerializer_ByteArrayToObject_DeserializationFailed {
+            get {
+                return ResourceManager.GetString("ObjectSerializer_ByteArrayToObject_DeserializationFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Serialization failed..
+        /// </summary>
+        public static string ObjectSerializer_ObjectToByteArray_SerializationFailed {
+            get {
+                return ResourceManager.GetString("ObjectSerializer_ObjectToByteArray_SerializationFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Initialized Python version: .
         /// </summary>
         public static string PythonInitializerService_Initialize_InitializedPythonVersion {

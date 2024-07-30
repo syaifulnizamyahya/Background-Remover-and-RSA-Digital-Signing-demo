@@ -10,13 +10,10 @@ namespace WpfTemplateStudio.Core.Services
 {
     public sealed class PythonInitializerService
     {
-        // Private static instance of the class
         private static PythonInitializerService instance = null;
 
-        // Lock synchronization object
         private static readonly object padlock = new object();
 
-        // Private constructor to prevent instantiation from other classes
         private PythonInitializerService()
         {
             var virtualEnvFolder = WpfTemplateStudio.Core.Properties.Resources.PythonInitializerService_PythonInitializerService_Conda;
@@ -62,12 +59,13 @@ namespace WpfTemplateStudio.Core.Services
             }
         }
 
-        // Public static property to get the instance of the class
+        /// <summary>
+        /// Phyton initializer singleton
+        /// </summary>
         public static PythonInitializerService Instance
         {
             get
             {
-                // Double-checked locking to ensure thread safety
                 if (instance == null)
                 {
                     lock (padlock)
@@ -82,12 +80,11 @@ namespace WpfTemplateStudio.Core.Services
             }
         }
 
-        // Example method to demonstrate singleton behavior
-        public void ShowMessage(string message)
-        {
-            Console.WriteLine(message);
-        }
-
+        /// <summary>
+        /// Initialize Phyton
+        /// </summary>
+        /// <returns>Phyton version</returns>
+        /// <exception cref="Exception"></exception>
         public string Initialize()
         {
             try

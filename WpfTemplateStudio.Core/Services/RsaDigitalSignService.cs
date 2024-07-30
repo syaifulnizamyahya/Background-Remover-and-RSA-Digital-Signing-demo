@@ -6,24 +6,32 @@ namespace WpfTemplateStudio.Core.Services;
 
 public class RsaDigitalSignService : IRsaDigitalSignService
 {
+    /// <summary>
+    /// Generates public and private keys
+    /// </summary>
+    /// <param name="publicKey"></param>
+    /// <param name="privateKey"></param>
     public static void RsaKeyGenerator(ref string publicKey, ref string privateKey)
     {
         using (var rsa = new RSACryptoServiceProvider(2048))
         {
-            // Export the public key
             publicKey = rsa.ToXmlString(false);
-            // Export the private key
             privateKey = rsa.ToXmlString(true);
         }
     }
 
+    /// <summary>
+    /// Generate digital signature of data
+    /// </summary>
+    /// <param name="dataToSign"></param>
+    /// <param name="privateKey"></param>
+    /// <returns></returns>
     public static byte[] SignData(object dataToSign, string privateKey)
     {
         using (var rsa = new RSACryptoServiceProvider())
         {
             rsa.FromXmlString(privateKey);
 
-            // Convert data to bytes
             var dataBytes = ObjectSerializer.ObjectToByteArray(dataToSign);
             var hash = SHA256.Create().ComputeHash(dataBytes);
 
@@ -33,6 +41,14 @@ public class RsaDigitalSignService : IRsaDigitalSignService
         }
     }
 
+    /// <summary>
+    /// Verify digital signature
+    /// </summary>
+    /// <param name="dataToVerify"></param>
+    /// <param name="publicKey"></param>
+    /// <param name="signature"></param>
+    /// <returns></returns>
+    /// <exception cref="ArgumentNullException"></exception>
     public static bool VerifyData(object dataToVerify, string publicKey, byte[] signature)
     {
         if (dataToVerify == null || publicKey == null || signature == null)
@@ -45,7 +61,6 @@ public class RsaDigitalSignService : IRsaDigitalSignService
         {
             rsa.FromXmlString(publicKey);
 
-            // Convert data to bytes
             var dataBytes = ObjectSerializer.ObjectToByteArray(dataToVerify);
             var hash = SHA256.Create().ComputeHash(dataBytes);
 
@@ -57,8 +72,6 @@ public class RsaDigitalSignService : IRsaDigitalSignService
             }
             else
             {
-                // Handle the case when CryptoConfig.MapNameToOID("SHA256") returns null
-                // Maybe throw an exception or handle it in a way that makes sense for your application
                 return false;
             }
         }

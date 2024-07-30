@@ -31,6 +31,14 @@ namespace WpfTemplateStudio.Core.Services
             return RemoveBackground(inputPath, null, model);
         }
 
+        /// <summary>
+        /// Removes the background from an image.
+        /// </summary>
+        /// <param name="inputPath"></param>
+        /// <param name="outputPath"></param>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
         public static byte[] RemoveBackground(string inputPath, string outputPath, DeepLearningModel? model)
         {
             if(String.IsNullOrEmpty(inputPath))

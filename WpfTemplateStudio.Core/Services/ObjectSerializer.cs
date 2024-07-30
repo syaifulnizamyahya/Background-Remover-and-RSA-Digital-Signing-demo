@@ -1,12 +1,16 @@
 ﻿using Newtonsoft.Json;
-using System.IO;
 using System.Text;
 
 namespace WpfTemplateStudio.Core.Services
 {
     public static class ObjectSerializer
     {
-        // Convert an object to a byte array
+        /// <summary>
+        /// Convert an object to a byte array
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        /// <exception cref="InvalidOperationException"></exception>
         public static byte[] ObjectToByteArray(object obj)
         {
             if (obj == null)
@@ -19,28 +23,30 @@ namespace WpfTemplateStudio.Core.Services
             }
             catch (JsonException ex)
             {
-                // Handle JSON serialization exceptions
-                // Log the exception or handle it as needed
-                throw new InvalidOperationException("Serialization failed.", ex);
+                throw new InvalidOperationException(WpfTemplateStudio.Core.Properties.Resources.ObjectSerializer_ObjectToByteArray_SerializationFailed, ex);
             }
         }
 
-        // Convert a byte array to an object
-        public static T? ByteArrayToObject<T>(byte[] arrBytes)
+        /// <summary>
+        /// Convert a byte array to an object
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="byteArray"></param>
+        /// <returns></returns>
+        /// <exception cref="InvalidOperationException"></exception>
+        public static T? ByteArrayToObject<T>(byte[] byteArray)
         {
-            if (arrBytes == null || arrBytes.Length == 0)
+            if (byteArray == null || byteArray.Length == 0)
                 return default;
 
             try
             {
-                string jsonString = Encoding.UTF8.GetString(arrBytes);
+                string jsonString = Encoding.UTF8.GetString(byteArray);
                 return JsonConvert.DeserializeObject<T>(jsonString);
             }
             catch (JsonException ex)
             {
-                // Handle JSON deserialization exceptions
-                // Log the exception or handle it as needed
-                throw new InvalidOperationException("Deserialization failed.", ex);
+                throw new InvalidOperationException(WpfTemplateStudio.Core.Properties.Resources.ObjectSerializer_ByteArrayToObject_DeserializationFailed, ex);
             }
         }
     }
