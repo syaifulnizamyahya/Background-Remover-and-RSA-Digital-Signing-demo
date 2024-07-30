@@ -138,6 +138,7 @@
                     Grid.Column="1"
                     Margin="4,4,4,4"
                     VerticalAlignment="Top"
+                    IsReadOnly="True"
                     Text="{Binding VerificationResult}"
                     TextWrapping="Wrap" />
             </Grid>
