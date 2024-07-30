@@ -3,7 +3,7 @@ DEMO
 ![image](https://github.com/user-attachments/assets/13c32031-76ca-45db-8a21-fcd603283907)<br>
 
 2. AI Background Remover
-![image](https://github.com/user-attachments/assets/b819725d-bcaa-4072-8dcc-6a1ec641f98e)<br>
+![image](https://github.com/user-attachments/assets/34a80540-f744-49d5-abc5-0aa91eca3124)<br>
 
 Best practices
 1. CommunityToolkit.MVVM
